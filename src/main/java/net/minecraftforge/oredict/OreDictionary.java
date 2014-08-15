@@ -419,6 +419,10 @@ public class OreDictionary
 
     public static boolean itemMatches(ItemStack target, ItemStack input, boolean strict)
     {
+        if (input == target)
+        {
+            return true;
+        }
         if (input == null && target != null || input != null && target == null)
         {
             return false;
