@@ -34,6 +34,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.util.WeightedRandom;
+import net.minecraft.village.MerchantRecipe;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings.GameType;
 import net.minecraftforge.event.AnvilUpdateEvent;
@@ -51,6 +52,7 @@ import net.minecraftforge.event.entity.player.PlayerOpenContainerEvent;
 import net.minecraftforge.event.entity.player.AnvilRepairEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.NoteBlockEvent;
+import net.minecraftforge.oredict.OreDictionary;
 import static net.minecraft.init.Blocks.*;
 
 public class ForgeHooks
@@ -459,5 +461,10 @@ public class ForgeHooks
         }
         te.note = (byte)e.getVanillaNoteId();
         return true;
+    }
+    
+    public static boolean areTradesEqual(MerchantRecipe trade1, MerchantRecipe trade2)
+    {
+        return OreDictionary.itemMatches(trade1.getItemToBuy(), trade2.getItemToBuy(), false) && OreDictionary.itemMatches(trade1.getSecondItemToBuy(), trade2.getSecondItemToBuy(), false); 
     }
 }
