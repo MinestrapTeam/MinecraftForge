@@ -9,3 +9,12 @@
          {
              if (!this.field_70170_p.field_72995_K)
              {
+@@ -566,7 +566,7 @@
+ 
+     private static ItemStack func_146088_a(Item p_146088_0_, Random p_146088_1_)
+     {
+-        return new ItemStack(p_146088_0_, func_146092_b(p_146088_0_, p_146088_1_), 0);
++        return new ItemStack(p_146088_0_, func_146092_b(p_146088_0_, p_146088_1_), net.minecraftforge.oredict.OreDictionary.WILDCARD_VALUE);
+     }
+ 
+     private static int func_146092_b(Item p_146092_0_, Random p_146092_1_)
