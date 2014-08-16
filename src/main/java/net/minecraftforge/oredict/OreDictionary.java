@@ -427,7 +427,20 @@ public class OreDictionary
         {
             return false;
         }
-        return (target.getItem() == input.getItem() && ((target.getItemDamage() == WILDCARD_VALUE && !strict) || target.getItemDamage() == input.getItemDamage()));
+        if (target.getItem() == input.getItem())
+        {
+            int targetDamage = target.getItemDamage();
+            int inputDamage = input.getItemDamage();
+            if (targetDamage == inputDamage)
+            {
+                return true;
+            }
+            else if (!strict)
+            {
+                return input.getItem().isDamageable() || target.getItem().isDamageable() || targetDamage == WILDCARD_VALUE || inputDamage == WILDCARD_VALUE;
+            }
+        }
+        return false;
     }
 
     //Convenience functions that make for cleaner code mod side. They all drill down to registerOre(String, int, ItemStack)
